@@ -32,4 +32,8 @@ export class UserService {
   patchUser(user: User): Observable<User>{ // Patch method - No need to send entire data, can send one property
     return this.http.patch<User>(`${this.apiUrl}/users/${user.id}`,user); // pass this user for payload
   }
+
+  deleteUser(id: number): Observable<unknown>{ // Delete method - sending only ID
+    return this.http.delete<unknown>(`${this.apiUrl}/users/${id}`); // pass user id
+  }
 }

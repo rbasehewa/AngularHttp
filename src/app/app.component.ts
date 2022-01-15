@@ -22,8 +22,9 @@ export class AppComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.onPatchUser();
+    // this.onPatchUser();
     this.onGetUsers();
+    this.onDeleteUser();
     // this.onGetUser();
     // this.onCreateUser();
 
@@ -75,5 +76,14 @@ export class AppComponent implements OnInit {
               );
             }
 
+
+            onDeleteUser():void{
+
+              this.userService.deleteUser(5).subscribe(
+                (response) => console.log('resonse from deleting',response),
+                (error: any) => console.log(error),
+                () => console.log('Done deleting the user')
+                );
+              }
 
   }
