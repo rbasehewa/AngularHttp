@@ -29,4 +29,7 @@ export class UserService {
     return this.http.put<User>(`${this.apiUrl}/users/${user.id}`,user); // pass this user for payload
   }
 
+  patchUser(user: User): Observable<User>{ // Patch method - No need to send entire data, can send one property
+    return this.http.patch<User>(`${this.apiUrl}/users/${user.id}`,user); // pass this user for payload
+  }
 }

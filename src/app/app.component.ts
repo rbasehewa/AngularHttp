@@ -11,35 +11,18 @@ export class AppComponent implements OnInit {
   title = 'AngularHttp';
 
 
-  private user: User = {
-    'id': 1,
-    'name': 'Ryan MMM',
+  private user: any = { // you are sending only parts in the patch ()
+    'id': 2,
+    'name': 'Ryan Maddu',
     'username': 'rbase',
-    'email': 'abc123@april.biz',
-    'address': {
-      'street': 'Kulas Light',
-      'suite': 'Apt. 556',
-      'city': 'Gwenborough',
-      'zipcode': '92998-3874',
-      'geo': {
-        'lat': '-37.3159',
-        'lng': '81.1496'
-      }
-    },
-    'phone': '1-770-736-8031 x56442',
-    'website': 'hildegard.org',
-    'company': {
-      'name': 'Vocus',
-      'catchPhrase': 'Multi-layered client-server neural-net',
-      'bs': 'harness real-time e-markets'
-    }
+    'email': 'abc123@april.biz'
   }
 
   constructor(private userService:UserService){}
 
 
   ngOnInit(): void {
-    this.onUpdateUser();
+    this.onPatchUser();
     this.onGetUsers();
     // this.onGetUser();
     // this.onCreateUser();
@@ -82,6 +65,15 @@ export class AppComponent implements OnInit {
             () => console.log('Updated the user')
             );
           }
+
+          onPatchUser():void{
+
+            this.userService.patchUser(this.user).subscribe(
+              (response) => console.log(response),
+              (error: any) => console.log(error),
+              () => console.log('Done patch the user')
+              );
+            }
 
 
   }
